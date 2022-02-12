@@ -45,6 +45,13 @@ func run(ctx context.Context) (err error) {
 						DefaultText: "default sample rate of audio device",
 						Required:    false,
 					},
+					&cli.IntFlag{
+						Name:        "buffer-samples",
+						Aliases:     []string{"b"},
+						Usage:       "audio buffer samples",
+						DefaultText: "samples for 10ms",
+						Required:    false,
+					},
 					&cli.BoolFlag{
 						Name:     "edge",
 						Usage:    "enable lower edge tuning",

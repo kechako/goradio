@@ -37,7 +37,10 @@ func playRadioCommand(ctx *cli.Context) error {
 	}
 
 	const channels = 1
-	var bufferSamples = sampleRate * 10 / 1000
+	bufferSamples := ctx.Int("buffer-samples")
+	if bufferSamples == 0 {
+		bufferSamples = sampleRate * 10 / 1000
+	}
 
 	stream, err := audio.Open[int16](
 		audio.WithOutputDevice(device),
